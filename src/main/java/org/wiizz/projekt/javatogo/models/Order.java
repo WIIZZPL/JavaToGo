@@ -9,6 +9,24 @@ public class Order {
     Restaurant madeBy;
     Dish[] dishes;
 
+    public Order() {
+
+    }
+
+    public Order(User orderedBy, Courier handledBy, Restaurant madeBy, Dish[] dishes) {
+        this.orderedBy = orderedBy;
+        this.handledBy = handledBy;
+        this.madeBy = madeBy;
+        this.dishes = dishes;
+    }
+
+    public Order(Order other) {
+        this.orderedBy = other.orderedBy;
+        this.handledBy = other.handledBy;
+        this.madeBy = other.madeBy;
+        this.dishes = other.dishes.clone();
+    }
+
     public User getOrderedBy() {
         return orderedBy;
     }

@@ -9,6 +9,26 @@ public class Restaurant {
     RestaurantRep representedBy;
     Dish[] dishes;
 
+    public Restaurant() {
+
+    }
+
+    public Restaurant(String name, String address, FoodCategory[] foodCategories, RestaurantRep representedBy, Dish[] dishes) {
+        this.name = name;
+        this.address = address;
+        this.foodCategories = foodCategories;
+        this.representedBy = representedBy;
+        this.dishes = dishes;
+    }
+
+    public Restaurant(Restaurant other) {
+        this.name = other.name;
+        this.address = other.address;
+        this.foodCategories = other.foodCategories.clone();
+        this.representedBy = other.representedBy;
+        this.dishes = other.dishes.clone();
+    }
+
     public String getName() {
         return name;
     }
