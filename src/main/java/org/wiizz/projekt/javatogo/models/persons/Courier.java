@@ -57,7 +57,10 @@ public class Courier extends Person {
     }
 
     public List<Order> deliverTo(User user) {
-        List<Order> userOrders = orders.stream().filter(order -> order.getOrderedBy() == user).toList();
+        List<Order> userOrders = new ArrayList<>();
+        for (Order order : orders) {
+            if (order.getOrderedBy().equals(user)) userOrders.add(order);
+        }
         orders.removeAll(userOrders);
         return userOrders;
     }
