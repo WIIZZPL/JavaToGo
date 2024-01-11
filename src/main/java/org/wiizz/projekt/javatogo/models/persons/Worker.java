@@ -38,4 +38,12 @@ public class Worker extends Person {
     public void setPESEL(String PESEL) {
         this.PESEL = PESEL;
     }
+
+    public void raiseNominal(float salaryRaise) {
+        salary += salaryRaise;
+    }
+
+    public void raisePercent(float salaryRaisePercent) {
+        salary += salary*salaryRaisePercent;
+    }
 }

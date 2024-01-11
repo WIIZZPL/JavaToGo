@@ -17,6 +17,14 @@ public class Review {
     public Review() {
     }
 
+    public Review(User postedBy, Order regardingOrder, Restaurant forRestaurant, int score, String text) {
+        this.postedBy = postedBy;
+        this.regardingOrder = regardingOrder;
+        this.forRestaurant = forRestaurant;
+        this.score = score;
+        this.text = text;
+    }
+
     public Review(User postedBy, Order regardingOrder, Restaurant forRestaurant, int score, String text, String repsResponse, RestaurantRep respondedBy) {
         this.postedBy = postedBy;
         this.regardingOrder = regardingOrder;

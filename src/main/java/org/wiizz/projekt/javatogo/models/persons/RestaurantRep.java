@@ -1,5 +1,7 @@
 package org.wiizz.projekt.javatogo.models.persons;
 
+import org.wiizz.projekt.javatogo.models.Review;
+
 import java.util.UUID;
 
 public class RestaurantRep extends Person {
@@ -25,5 +27,12 @@ public class RestaurantRep extends Person {
 
     public void setPESEL(String PESEL) {
         this.PESEL = PESEL;
+    }
+
+    public Review respond(Review review, String text) {
+        Review newReview = new Review(review);
+        newReview.setRespondedBy(this);
+        newReview.setRepsResponse(text);
+        return newReview;
     }
 }

@@ -1,5 +1,10 @@
 package org.wiizz.projekt.javatogo.models.persons;
 
+import org.wiizz.projekt.javatogo.models.Dish;
+import org.wiizz.projekt.javatogo.models.Order;
+import org.wiizz.projekt.javatogo.models.Restaurant;
+import org.wiizz.projekt.javatogo.models.Review;
+
 import java.util.UUID;
 
 public class User extends Person {
@@ -25,5 +30,13 @@ public class User extends Person {
 
     public void setDefaultDeliveryAddress(String defaultDeliveryAddress) {
         this.defaultDeliveryAddress = defaultDeliveryAddress;
+    }
+
+    public Order makeOrder(Restaurant restaurant, Dish[] dishes) {
+        return new Order(this, restaurant, dishes);
+    }
+
+    public Review makeReview(Order order, int score, String text){
+        return new Review(this, order, order.getMadeBy(), score, text);
     }
 }
