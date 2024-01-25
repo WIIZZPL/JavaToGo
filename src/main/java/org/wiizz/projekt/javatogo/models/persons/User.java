@@ -5,6 +5,7 @@ import org.wiizz.projekt.javatogo.models.Order;
 import org.wiizz.projekt.javatogo.models.Restaurant;
 import org.wiizz.projekt.javatogo.models.Review;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class User extends Person {
@@ -32,7 +33,7 @@ public class User extends Person {
         this.defaultDeliveryAddress = defaultDeliveryAddress;
     }
 
-    public Order makeOrder(Restaurant restaurant, Dish[] dishes) {
+    public Order makeOrder(Restaurant restaurant, ArrayList<Dish> dishes) {
         return new Order(this, restaurant, dishes);
     }
 

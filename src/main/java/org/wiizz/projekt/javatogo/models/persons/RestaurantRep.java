@@ -30,9 +30,8 @@ public class RestaurantRep extends Person {
     }
 
     public Review respond(Review review, String text) {
-        Review newReview = new Review(review);
-        newReview.setRespondedBy(this);
-        newReview.setRepsResponse(text);
-        return newReview;
+        review.setRespondedBy(this);
+        review.setRepsResponse(text);
+        return review;
     }
 }

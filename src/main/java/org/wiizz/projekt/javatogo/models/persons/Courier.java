@@ -12,24 +12,23 @@ public class Courier extends Person {
     float ratePerKm;
     String PESEL;
 
-    List<Order> orders;
+    ArrayList<Order> orders = new ArrayList<>();
 
     public Courier() {
-
     }
 
-    public Courier(UUID uuid, String fName, String sName, String phone, String email, String address, float ratePerKm, String PESEL, Order[] orders) {
+    public Courier(UUID uuid, String fName, String sName, String phone, String email, String address, float ratePerKm, String PESEL, ArrayList<Order> orders) {
         super(uuid, fName, sName, phone, email, address);
         this.ratePerKm = ratePerKm;
         this.PESEL = PESEL;
-        this.orders = new ArrayList<>(List.of(orders));
+        this.orders = new ArrayList<>(orders);
     }
 
     public Courier(Courier other) {
         super(other);
         this.ratePerKm = other.ratePerKm;
         this.PESEL = other.PESEL;
-        this.orders = other.orders;
+        this.orders = new ArrayList<>(orders);
     }
 
     public float getRatePerKm() {
@@ -48,16 +47,16 @@ public class Courier extends Person {
         this.PESEL = PESEL;
     }
 
-    public Order[] getOrders() {
-        return (Order[]) orders.toArray();
+    public ArrayList<Order> getOrders() {
+        return new ArrayList<>(orders);
     }
 
-    public void setOrders(Order[] orders) {
-        this.orders = new ArrayList<>(List.of(orders));
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = new ArrayList<>(orders);
     }
 
-    public List<Order> deliverTo(User user) {
-        List<Order> userOrders = orders.stream().filter(order -> order.getOrderedBy() == user).toList();
+    public ArrayList<Order> deliverTo(User user) {
+        ArrayList<Order> userOrders = new ArrayList<>(orders.stream().filter(order -> order.getOrderedBy() == user).toList());
         orders.removeAll(userOrders);
         return userOrders;
     }

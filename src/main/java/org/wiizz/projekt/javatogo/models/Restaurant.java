@@ -9,31 +9,30 @@ import java.util.List;
 public class Restaurant {
     String name;
     String address;
-    FoodCategory[] foodCategories;
+    ArrayList<FoodCategory> foodCategories = new ArrayList<>();
     RestaurantRep representedBy;
-    List<Dish> dishes;
-
-    List<Order> ordersToMake;
-    List<Order> ordersToReceive;
+    ArrayList<Dish> dishes = new ArrayList<>();
+    ArrayList<Order> ordersToMake = new ArrayList<>();
+    ArrayList<Order> ordersToReceive = new ArrayList<>();
 
     public Restaurant() {
 
     }
 
-    public Restaurant(String name, String address, FoodCategory[] foodCategories, RestaurantRep representedBy, Dish[] dishes, Order[] ordersToMake, Order[] ordersToReceive) {
+    public Restaurant(String name, String address, ArrayList<FoodCategory> foodCategories, RestaurantRep representedBy, ArrayList<Dish> dishes, ArrayList<Order> ordersToMake, ArrayList<Order> ordersToReceive) {
         this.name = name;
         this.address = address;
-        this.foodCategories = foodCategories;
+        this.foodCategories = new ArrayList<>(foodCategories);
         this.representedBy = representedBy;
-        this.dishes = Arrays.stream(dishes).toList();
-        this.ordersToMake = Arrays.stream(ordersToMake).toList();
-        this.ordersToReceive = Arrays.stream(ordersToReceive).toList();
+        this.dishes = new ArrayList<>(dishes);
+        this.ordersToMake = new ArrayList<>(ordersToMake);
+        this.ordersToReceive = new ArrayList<>(ordersToReceive);
     }
 
     public Restaurant(Restaurant other) {
         this.name = other.name;
         this.address = other.address;
-        this.foodCategories = other.foodCategories.clone();
+        this.foodCategories = new ArrayList<>(other.foodCategories);
         this.representedBy = other.representedBy;
         this.dishes = new ArrayList<>(other.dishes);
         this.ordersToMake = new ArrayList<>(other.ordersToMake);
@@ -56,12 +55,12 @@ public class Restaurant {
         this.address = address;
     }
 
-    public FoodCategory[] getFoodCategories() {
-        return foodCategories;
+    public ArrayList<FoodCategory> getFoodCategories() {
+        return new ArrayList<>(foodCategories);
     }
 
-    public void setFoodCategories(FoodCategory[] foodCategories) {
-        this.foodCategories = foodCategories;
+    public void setFoodCategories(ArrayList<FoodCategory> foodCategories) {
+        this.foodCategories = new ArrayList<>(foodCategories);
     }
 
     public RestaurantRep getRepresentedBy() {
@@ -72,28 +71,28 @@ public class Restaurant {
         this.representedBy = representedBy;
     }
 
-    public Dish[] getDishes() {
-        return (Dish[]) dishes.toArray();
+    public ArrayList<Dish> getDishes() {
+        return new ArrayList<>(dishes);
     }
 
-    public void setDishes(Dish[] dishes) {
-        this.dishes = Arrays.stream(dishes).toList();
+    public void setDishes(ArrayList<Dish> dishes) {
+        this.dishes = new ArrayList<>(dishes);
     }
 
-    public Order[] getOrdersToMake() {
-        return (Order[]) ordersToMake.toArray();
+    public ArrayList<Order> getOrdersToMake() {
+        return new ArrayList<>(ordersToMake);
     }
 
-    public void setOrdersToMake(Order[] ordersToMake) {
-        this.ordersToMake = Arrays.stream(ordersToMake).toList();
+    public void setOrdersToMake(ArrayList<Order> ordersToMake) {
+        this.ordersToMake = new ArrayList<>(ordersToMake);
     }
 
-    public Order[] getOrdersToReceive() {
-        return (Order[]) ordersToReceive.toArray();
+    public ArrayList<Order> getOrdersToReceive() {
+        return new ArrayList<>(ordersToReceive);
     }
 
-    public void setOrdersToReceive(Order[] ordersToReceive) {
-        this.ordersToReceive = Arrays.stream(ordersToReceive).toList();
+    public void setOrdersToReceive(ArrayList<Order> ordersToReceive) {
+        this.ordersToReceive = new ArrayList<>(ordersToReceive);
     }
 
     public void addDish(Dish dish) {
@@ -113,13 +112,13 @@ public class Restaurant {
         ordersToReceive.add(order);
     }
 
-    public Order[] popOrderToReceive() {
+    public ArrayList<Order> popOrderToReceive() {
         return popOrdersToReceive(1);
     }
 
-    public Order[] popOrdersToReceive(int number) {
-        List<Order> ordersToPop = ordersToReceive.subList(0, number);
-        ordersToReceive.remove(ordersToPop);
-        return (Order[]) ordersToPop.toArray();
+    public ArrayList<Order> popOrdersToReceive(int number) {
+        ArrayList<Order> ordersToPop = new ArrayList<>(ordersToReceive.subList(0, number));
+        ordersToReceive.removeAll(ordersToPop);
+        return new ArrayList<>(ordersToPop);
     }
 }

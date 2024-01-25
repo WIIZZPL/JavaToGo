@@ -1,26 +1,30 @@
 package org.wiizz.projekt.javatogo.models;
 
+import org.wiizz.projekt.javatogo.models.persons.User;
+
+import java.util.ArrayList;
+
 public class Dish {
     String name;
     float price;
-    Allergen[] allergens;
-    String[] userParams;
+    ArrayList<Allergen> allergens = new ArrayList<>();
+    ArrayList<String> userParams = new ArrayList<>();
 
     public Dish() {
     }
 
-    public Dish(String name, float price, Allergen[] allergens, String[] userParams) {
+    public Dish(String name, float price, ArrayList<Allergen> allergens, ArrayList<String> userParams) {
         this.name = name;
         this.price = price;
-        this.allergens = allergens;
-        this.userParams = userParams;
+        this.allergens = new ArrayList<>(allergens);
+        this.userParams = new ArrayList<>(userParams);
     }
 
     public Dish(Dish other) {
         this.name = other.name;
         this.price = other.price;
-        this.allergens = other.allergens.clone();
-        this.userParams = other.userParams.clone();
+        this.allergens = new ArrayList<>(other.allergens);
+        this.userParams = new ArrayList<>(other.userParams);
     }
 
     public String getName() {
@@ -39,19 +43,19 @@ public class Dish {
         this.price = price;
     }
 
-    public Allergen[] getAllergens() {
-        return allergens;
+    public ArrayList<Allergen> getAllergens() {
+        return new ArrayList<>(allergens);
     }
 
-    public void setAllergens(Allergen[] allergens) {
-        this.allergens = allergens;
+    public void setAllergens(ArrayList<Allergen> allergens) {
+        this.allergens = new ArrayList<>(allergens);
     }
 
-    public String[] getUserParams() {
-        return userParams;
+    public ArrayList<String> getUserParams() {
+        return new ArrayList<>(userParams);
     }
 
-    public void setUserParams(String[] userParams) {
-        this.userParams = userParams;
+    public void setUserParams(ArrayList<String> userParams) {
+        this.userParams = new ArrayList<>(userParams);
     }
 }

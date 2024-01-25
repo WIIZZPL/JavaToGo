@@ -4,30 +4,28 @@ import org.wiizz.projekt.javatogo.models.persons.Courier;
 import org.wiizz.projekt.javatogo.models.persons.User;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Order {
     User orderedBy;
     Courier handledBy;
     Restaurant madeBy;
-    List<Dish> dishes;
+    ArrayList<Dish> dishes = new ArrayList<>();
 
     public Order() {
 
     }
 
-    public Order(User orderedBy, Restaurant madeBy, Dish[] dishes) {
+    public Order(User orderedBy, Restaurant madeBy, ArrayList<Dish> dishes) {
         this.orderedBy = orderedBy;
         this.madeBy = madeBy;
-        this.dishes = Arrays.stream(dishes).toList();
+        this.dishes = new ArrayList<>(dishes);
     }
 
-    public Order(User orderedBy, Courier handledBy, Restaurant madeBy, Dish[] dishes) {
+    public Order(User orderedBy, Courier handledBy, Restaurant madeBy, ArrayList<Dish> dishes) {
         this.orderedBy = orderedBy;
         this.handledBy = handledBy;
         this.madeBy = madeBy;
-        this.dishes = Arrays.stream(dishes).toList();
+        this.dishes = new ArrayList<>(dishes);
     }
 
     public Order(Order other) {
@@ -61,12 +59,12 @@ public class Order {
         this.madeBy = madeBy;
     }
 
-    public Dish[] getDishes() {
-        return (Dish[]) dishes.toArray();
+    public ArrayList<Dish> getDishes() {
+        return new ArrayList<>(dishes);
     }
 
-    public void setDishes(Dish[] dishes) {
-        this.dishes = Arrays.stream(dishes).toList();
+    public void setDishes(ArrayList<Dish> dishes) {
+        this.dishes = new ArrayList<>(dishes);
     }
 
     public void addDish(Dish dish) {
