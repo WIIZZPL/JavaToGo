@@ -9,6 +9,7 @@ import org.wiizz.projekt.javatogo.models.Restaurant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.random.RandomGenerator;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +18,9 @@ class CourierTest {
     @Test
     void deliverTo() {
         User userA = new User();
+        userA.setUuid(UUID.randomUUID());
         User userB = new User();
+        userB.setUuid(UUID.randomUUID());
         Restaurant restaurant = new Restaurant();
         ArrayList<Dish> dishes = new ArrayList<>();
         ArrayList<Order> orders = new ArrayList<>();
